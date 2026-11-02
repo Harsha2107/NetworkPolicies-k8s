@@ -1,0 +1,21 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: dev-client
+  namespace: dev
+spec:
+  podSelector:
+    matchLabels:
+      env: dev
+  policyTypes:
+    - Ingress
+  ingress:
+      - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: client
+          podSelector:
+            matchLabels:
+              env: client
+

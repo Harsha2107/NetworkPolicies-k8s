@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: client-pod
+  labels:
+    env: client
+spec:
+  containers:
+    - name: client-cont
+      image: nginx
+      ports:
+        - containerPort: 80
+
